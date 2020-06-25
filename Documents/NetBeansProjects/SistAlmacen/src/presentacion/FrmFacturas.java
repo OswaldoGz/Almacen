@@ -20,8 +20,12 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
      */
     public FrmFacturas() {
         initComponents();
+        
+        miModelo = (DefaultTableModel) tblFacturas.getModel();
+    
     }
-
+        
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,7 +47,7 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
         txtProveedor = new javax.swing.JTextField();
         txtFecha = new com.toedter.calendar.JDateChooser();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblFactura = new javax.swing.JTable();
+        tblFacturas = new javax.swing.JTable();
         btnNuevo = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -91,7 +95,7 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
             }
         });
 
-        tblFactura.setModel(new javax.swing.table.DefaultTableModel(
+        tblFacturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -99,7 +103,7 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
                 "Codigo", "Descripcion ", "Cantidad", "Un/Medida", "PrecioUnitario", "Total"
             }
         ));
-        jScrollPane2.setViewportView(tblFactura);
+        jScrollPane2.setViewportView(tblFacturas);
 
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -212,6 +216,7 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
+       // miModelo.addRow(new object{""});
     }//GEN-LAST:event_btnNuevoActionPerformed
 
 
@@ -229,7 +234,7 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable tblFactura;
+    private javax.swing.JTable tblFacturas;
     private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLinea;
