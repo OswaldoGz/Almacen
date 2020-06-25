@@ -113,6 +113,7 @@ public class FrmUsuarios extends javax.swing.JInternalFrame {
 
         cmbPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar un perfil", "administrador", "empleado" }));
 
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngflow.com (2).png"))); // NOI18N
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +121,7 @@ public class FrmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardarr.png"))); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +129,7 @@ public class FrmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pngflow.com.png"))); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +137,7 @@ public class FrmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelarr.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,36 +150,35 @@ public class FrmUsuarios extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtClave, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbPerfil, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtConfirmarClave)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnGuardar)
-                                .addGap(23, 23, 23)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnEditar)
-                                    .addComponent(btnCancelar))))
-                        .addContainerGap(61, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnNuevo)
-                        .addGap(166, 166, 166))))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtClave, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbPerfil, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtConfirmarClave)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnNuevo)
+                            .addComponent(btnGuardar))
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCancelar)
+                            .addComponent(btnEditar))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,11 +211,11 @@ public class FrmUsuarios extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo)
                     .addComponent(btnEditar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar))
-                .addGap(105, 105, 105))
+                .addGap(81, 81, 81))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Consultas"));
@@ -223,6 +226,7 @@ public class FrmUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupaa.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,6 +252,7 @@ public class FrmUsuarios extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tblUsuarios);
 
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminarr.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,9 +287,9 @@ public class FrmUsuarios extends javax.swing.JInternalFrame {
                     .addComponent(btnBuscar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEliminar)
-                .addGap(86, 86, 86))
+                .addGap(93, 93, 93))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -338,7 +343,7 @@ public class FrmUsuarios extends javax.swing.JInternalFrame {
             txtUsuario.requestFocusInWindow();
             return;
               }
-              String clave = new String (txtClave.getPassword());
+             String clave = new String (txtClave.getPassword());
              String confirma = new String (txtConfirmarClave.getPassword());
                   if(clave.equals("")){
                     JOptionPane.showMessageDialog(rootPane, "CAMPO clave OBLIGATORIO","VALIDACION",JOptionPane.WARNING_MESSAGE);
@@ -399,10 +404,11 @@ public class FrmUsuarios extends javax.swing.JInternalFrame {
          if(msg == "si"){
              JOptionPane.showMessageDialog(rootPane, "se atualizo de forma correcta","INFORMACION",JOptionPane.INFORMATION_MESSAGE);
              
-         }else JOptionPane.showMessageDialog(rootPane, "ocurrio un problema al atualizar","INFORMACION",JOptionPane.ERROR_MESSAGE);
+         }else {
+             JOptionPane.showMessageDialog(rootPane, "ocurrio un problema al atualizar","INFORMACION",JOptionPane.ERROR_MESSAGE);
         
-          }              
-        
+           }              
+        }
           limpiar();
           habilitar(true);
           mostrarBuscar("");

@@ -80,6 +80,10 @@ public class MDIPrincipal extends javax.swing.JFrame {
         Icon IcLineas = new ImageIcon(ImLineas.getImage().getScaledInstance(26,26, Image.SCALE_DEFAULT));
         ItemLineas.setIcon(IcLineas);
         
+        ImageIcon ImProvee = new ImageIcon(getClass().getResource("/Imagenes/areas.png"));
+        Icon IcProve = new ImageIcon(ImProvee.getImage().getScaledInstance(26,26, Image.SCALE_DEFAULT));
+        ItemProveedores.setIcon(IcProve);
+        
         timer.start();
     }
 
@@ -131,6 +135,7 @@ public class MDIPrincipal extends javax.swing.JFrame {
         ItemUsuarios = new javax.swing.JMenuItem();
         ItemInfo = new javax.swing.JMenuItem();
         ItemLineas = new javax.swing.JMenuItem();
+        ItemProveedores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 650));
@@ -292,6 +297,14 @@ public class MDIPrincipal extends javax.swing.JFrame {
         });
         menuHerramientas.add(ItemLineas);
 
+        ItemProveedores.setText("Proveedores");
+        ItemProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemProveedoresActionPerformed(evt);
+            }
+        });
+        menuHerramientas.add(ItemProveedores);
+
         jMenuBar2.add(menuHerramientas);
 
         setJMenuBar(jMenuBar2);
@@ -305,6 +318,10 @@ public class MDIPrincipal extends javax.swing.JFrame {
 
     private void btnFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturasActionPerformed
         // TODO add your handling code here:
+        FrmFacturas misFacturas = new FrmFacturas();
+        dpnEscritorio.add(misFacturas);
+        misFacturas.show();
+        
     }//GEN-LAST:event_btnFacturasActionPerformed
 
     private void ItemReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemReportesActionPerformed
@@ -323,6 +340,13 @@ public class MDIPrincipal extends javax.swing.JFrame {
         misLineas.show();
         
     }//GEN-LAST:event_ItemLineasActionPerformed
+
+    private void ItemProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemProveedoresActionPerformed
+        // TODO add your handling code here:
+        FrmProveedores misProveedores = new FrmProveedores();
+        dpnEscritorio.add(misProveedores);
+        misProveedores.show();
+    }//GEN-LAST:event_ItemProveedoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,6 +391,7 @@ public class MDIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem ItemDRec;
     private javax.swing.JMenuItem ItemInfo;
     private javax.swing.JMenuItem ItemLineas;
+    private javax.swing.JMenuItem ItemProveedores;
     private javax.swing.JMenuItem ItemReportes;
     private javax.swing.JMenuItem ItemUsuarios;
     private javax.swing.JButton btnAlmacen;
