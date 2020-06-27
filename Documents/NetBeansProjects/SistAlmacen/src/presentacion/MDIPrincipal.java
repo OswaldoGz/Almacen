@@ -24,86 +24,86 @@ public class MDIPrincipal extends javax.swing.JFrame {
      * Creates new form MDIPrincipal
      */
     public MDIPrincipal() {
-      
-        
+
         initComponents();
-        
+
         ImageIcon icFacturas = new ImageIcon(getClass().getResource("/Imagenes/Facturasicono.png"));
-        Icon iconoFac = new ImageIcon(icFacturas.getImage().getScaledInstance(40,40, Image.SCALE_DEFAULT));
+        Icon iconoFac = new ImageIcon(icFacturas.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
         btnFacturas.setIcon(iconoFac);
-        
-          ImageIcon icRecibos = new ImageIcon(getClass().getResource("/Imagenes/Reciboicono.png"));
-        Icon iconoRec = new ImageIcon(icRecibos.getImage().getScaledInstance(40,40, Image.SCALE_DEFAULT));
+
+        ImageIcon icRecibos = new ImageIcon(getClass().getResource("/Imagenes/Reciboicono.png"));
+        Icon iconoRec = new ImageIcon(icRecibos.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
         btnRecibos.setIcon(iconoRec);
-        
-          ImageIcon icAlmacen = new ImageIcon(getClass().getResource("/Imagenes/IconoAlmacen.png"));
-        Icon iconoAlm = new ImageIcon(icAlmacen.getImage().getScaledInstance(40,60, Image.SCALE_DEFAULT));
+
+        ImageIcon icAlmacen = new ImageIcon(getClass().getResource("/Imagenes/IconoAlmacen.png"));
+        Icon iconoAlm = new ImageIcon(icAlmacen.getImage().getScaledInstance(40, 60, Image.SCALE_DEFAULT));
         btnAlmacen.setIcon(iconoAlm);
-        
+
         ImageIcon mConsultas = new ImageIcon(getClass().getResource("/Imagenes/BusquedaIcono.png"));
-        Icon icConsultas = new ImageIcon(mConsultas.getImage().getScaledInstance(32,32, Image.SCALE_DEFAULT));
+        Icon icConsultas = new ImageIcon(mConsultas.getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
         menuConsultas.setIcon(icConsultas);
-        
+
         ImageIcon imenuDB = new ImageIcon(getClass().getResource("/Imagenes/DBMenu.png"));
-        Icon icDb = new ImageIcon(imenuDB.getImage().getScaledInstance(32,32, Image.SCALE_DEFAULT));
+        Icon icDb = new ImageIcon(imenuDB.getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
         menuDB.setIcon(icDb);
-        
+
         ImageIcon imHerramientas = new ImageIcon(getClass().getResource("/Imagenes/opciones.png"));
-        Icon icHerramientas = new ImageIcon(imHerramientas.getImage().getScaledInstance(32,32, Image.SCALE_DEFAULT));
+        Icon icHerramientas = new ImageIcon(imHerramientas.getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
         menuHerramientas.setIcon(icHerramientas);
-        
+
         ImageIcon imitemUs = new ImageIcon(getClass().getResource("/Imagenes/usuarios.png"));
-        Icon icUs = new ImageIcon(imitemUs.getImage().getScaledInstance(26,26, Image.SCALE_DEFAULT));
+        Icon icUs = new ImageIcon(imitemUs.getImage().getScaledInstance(26, 26, Image.SCALE_DEFAULT));
         ItemUsuarios.setIcon(icUs);
-        
+
         ImageIcon ImInfo = new ImageIcon(getClass().getResource("/Imagenes/Info.png"));
-        Icon icInfo = new ImageIcon(ImInfo.getImage().getScaledInstance(26,26, Image.SCALE_DEFAULT));
+        Icon icInfo = new ImageIcon(ImInfo.getImage().getScaledInstance(26, 26, Image.SCALE_DEFAULT));
         ItemInfo.setIcon(icInfo);
-        
+
         ImageIcon imItemDB = new ImageIcon(getClass().getResource("/Imagenes/respaldoyrestaurar.png"));
-        Icon icItemDB = new ImageIcon(imItemDB.getImage().getScaledInstance(26,26, Image.SCALE_DEFAULT));
+        Icon icItemDB = new ImageIcon(imItemDB.getImage().getScaledInstance(26, 26, Image.SCALE_DEFAULT));
         ItemDB.setIcon(icItemDB);
-        
+
         ImageIcon ImIReportes = new ImageIcon(getClass().getResource("/Imagenes/Facturasicono.png"));
-        Icon icReportes = new ImageIcon(ImIReportes.getImage().getScaledInstance(26,26, Image.SCALE_DEFAULT));
+        Icon icReportes = new ImageIcon(ImIReportes.getImage().getScaledInstance(26, 26, Image.SCALE_DEFAULT));
         ItemReportes.setIcon(icReportes);
-        
+
         ImageIcon ImDetFac = new ImageIcon(getClass().getResource("/Imagenes/Facturas.png"));
-        Icon IcDetFac = new ImageIcon(ImDetFac.getImage().getScaledInstance(26,26, Image.SCALE_DEFAULT));
-        ItemDFac.setIcon(IcDetFac);
-        
+        Icon IcDetFac = new ImageIcon(ImDetFac.getImage().getScaledInstance(26, 26, Image.SCALE_DEFAULT));
+        ItemDetFact.setIcon(IcDetFac);
+
         ImageIcon ImDetRec = new ImageIcon(getClass().getResource("/Imagenes/Reciboicono.png"));
-        Icon IcDetRec = new ImageIcon(ImDetRec.getImage().getScaledInstance(26,26, Image.SCALE_DEFAULT));
+        Icon IcDetRec = new ImageIcon(ImDetRec.getImage().getScaledInstance(26, 26, Image.SCALE_DEFAULT));
         ItemDRec.setIcon(IcDetRec);
-        
+
         ImageIcon ImLineas = new ImageIcon(getClass().getResource("/Imagenes/areas.png"));
-        Icon IcLineas = new ImageIcon(ImLineas.getImage().getScaledInstance(26,26, Image.SCALE_DEFAULT));
+        Icon IcLineas = new ImageIcon(ImLineas.getImage().getScaledInstance(26, 26, Image.SCALE_DEFAULT));
         ItemLineas.setIcon(IcLineas);
-        
+
         ImageIcon ImProvee = new ImageIcon(getClass().getResource("/Imagenes/areas.png"));
-        Icon IcProve = new ImageIcon(ImProvee.getImage().getScaledInstance(26,26, Image.SCALE_DEFAULT));
+        Icon IcProve = new ImageIcon(ImProvee.getImage().getScaledInstance(26, 26, Image.SCALE_DEFAULT));
         ItemProveedores.setIcon(IcProve);
-        
+
         timer.start();
     }
 
-    Timer  timer = new Timer(1000, new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                Calendar cal = new GregorianCalendar();
-                int hh, mm, ss, dia, mes , aa;
-             hh = cal.get(Calendar.HOUR_OF_DAY);
-             ss = cal.get(Calendar.SECOND);
-             mm = cal.get(Calendar.MINUTE);
-             
-             dia = cal.get(Calendar.DAY_OF_MONTH);
-             mes = cal.get(Calendar.MONTH);
-             aa = cal.get(Calendar.YEAR);
-             
-             lblHora.setText(hh+":"+mm+":"+ss);
-             lblFecha.setText(dia+"/"+(mes+1)+"/"+aa);
-             
-            }       
-            });
+    Timer timer = new Timer(1000, new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            Calendar cal = new GregorianCalendar();
+            int hh, mm, ss, dia, mes, aa;
+            hh = cal.get(Calendar.HOUR_OF_DAY);
+            ss = cal.get(Calendar.SECOND);
+            mm = cal.get(Calendar.MINUTE);
+
+            dia = cal.get(Calendar.DAY_OF_MONTH);
+            mes = cal.get(Calendar.MONTH);
+            aa = cal.get(Calendar.YEAR);
+
+            lblHora.setText(hh + ":" + mm + ":" + ss);
+            lblFecha.setText(dia + "/" + (mes + 1) + "/" + aa);
+
+        }
+    });
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,7 +127,7 @@ public class MDIPrincipal extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         menuConsultas = new javax.swing.JMenu();
         ItemReportes = new javax.swing.JMenuItem();
-        ItemDFac = new javax.swing.JMenuItem();
+        ItemDetFact = new javax.swing.JMenuItem();
         ItemDRec = new javax.swing.JMenuItem();
         menuDB = new javax.swing.JMenu();
         ItemDB = new javax.swing.JMenuItem();
@@ -261,8 +261,13 @@ public class MDIPrincipal extends javax.swing.JFrame {
         });
         menuConsultas.add(ItemReportes);
 
-        ItemDFac.setText("Detalle de Facturas");
-        menuConsultas.add(ItemDFac);
+        ItemDetFact.setText("Detalle de Facturas");
+        ItemDetFact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemDetFactActionPerformed(evt);
+            }
+        });
+        menuConsultas.add(ItemDetFact);
 
         ItemDRec.setText("Detalle de Recibos");
         menuConsultas.add(ItemDRec);
@@ -314,6 +319,9 @@ public class MDIPrincipal extends javax.swing.JFrame {
 
     private void btnAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlmacenActionPerformed
         // TODO add your handling code here:
+        frmInventario miProducto = new frmInventario();
+        dpnEscritorio.add(miProducto);
+        miProducto.show();
     }//GEN-LAST:event_btnAlmacenActionPerformed
 
     private void btnFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturasActionPerformed
@@ -321,7 +329,7 @@ public class MDIPrincipal extends javax.swing.JFrame {
         FrmFacturas misFacturas = new FrmFacturas();
         dpnEscritorio.add(misFacturas);
         misFacturas.show();
-        
+
     }//GEN-LAST:event_btnFacturasActionPerformed
 
     private void ItemReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemReportesActionPerformed
@@ -329,7 +337,7 @@ public class MDIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ItemReportesActionPerformed
 
     private void ItemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemUsuariosActionPerformed
-        FrmUsuarios misUsuarios =  new FrmUsuarios();
+        FrmUsuarios misUsuarios = new FrmUsuarios();
         dpnEscritorio.add(misUsuarios);
         misUsuarios.show();
     }//GEN-LAST:event_ItemUsuariosActionPerformed
@@ -338,7 +346,7 @@ public class MDIPrincipal extends javax.swing.JFrame {
         FrmLineas misLineas = new FrmLineas();
         dpnEscritorio.add(misLineas);
         misLineas.show();
-        
+
     }//GEN-LAST:event_ItemLineasActionPerformed
 
     private void ItemProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemProveedoresActionPerformed
@@ -347,6 +355,13 @@ public class MDIPrincipal extends javax.swing.JFrame {
         dpnEscritorio.add(misProveedores);
         misProveedores.show();
     }//GEN-LAST:event_ItemProveedoresActionPerformed
+
+    private void ItemDetFactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemDetFactActionPerformed
+        // TODO add your handling code here:
+        FrmDetFacturas misFacturas = new FrmDetFacturas();
+        dpnEscritorio.add(misFacturas);
+        misFacturas.show();
+    }//GEN-LAST:event_ItemDetFactActionPerformed
 
     /**
      * @param args the command line arguments
@@ -378,17 +393,16 @@ public class MDIPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-             new MDIPrincipal().setVisible(true);
-             
-          
+                new MDIPrincipal().setVisible(true);
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem ItemDB;
-    private javax.swing.JMenuItem ItemDFac;
     private javax.swing.JMenuItem ItemDRec;
+    private javax.swing.JMenuItem ItemDetFact;
     private javax.swing.JMenuItem ItemInfo;
     private javax.swing.JMenuItem ItemLineas;
     private javax.swing.JMenuItem ItemProveedores;

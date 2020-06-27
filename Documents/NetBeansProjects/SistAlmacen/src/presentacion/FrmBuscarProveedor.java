@@ -7,6 +7,8 @@ package presentacion;
 
 import Datos.DProveedores;
 import Logica.LProveedores;
+import java.awt.Point;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -53,6 +55,11 @@ public class FrmBuscarProveedor extends javax.swing.JDialog {
         setTitle("Proveedores");
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         tblProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -65,6 +72,11 @@ public class FrmBuscarProveedor extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblProveedoresMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblProveedores);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -95,6 +107,24 @@ public class FrmBuscarProveedor extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        mostrarBuscar(txtBuscar.getText());
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void tblProveedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProveedoresMousePressed
+        // TODO add your handling code here:
+        JTable tbl = (JTable) evt.getSource();
+        //Point pt = evt.getPoint();
+        //int row = tbl.rowAtPoint(pt);
+        if(evt.getClickCount() == 2){
+            String id = tblProveedores.getValueAt(tblProveedores.getSelectedRow(), 0).toString();
+            String provedor = tblProveedores.getValueAt(tblProveedores.getSelectedRow(), 1).toString();
+            FrmFacturas.setProveedores(id, provedor);
+            this.dispose();
+        }
+    }//GEN-LAST:event_tblProveedoresMousePressed
 
     /**
      * @param args the command line arguments

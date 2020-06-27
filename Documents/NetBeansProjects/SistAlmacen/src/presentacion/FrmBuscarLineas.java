@@ -7,6 +7,7 @@ package presentacion;
 
 import Datos.DLineas;
 import Logica.LLineas;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -64,9 +65,19 @@ public class FrmBuscarLineas extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblLineas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblLineasMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblLineas);
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,6 +107,24 @@ public class FrmBuscarLineas extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        mostrarBuscar(txtBuscar.getText());
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void tblLineasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLineasMousePressed
+        // TODO add your handling code here:
+                JTable tbl = (JTable) evt.getSource();
+        //Point pt = evt.getPoint();
+        //int row = tbl.rowAtPoint(pt);
+        if(evt.getClickCount() == 2){
+            String id = tblLineas.getValueAt(tblLineas.getSelectedRow(), 0).toString();
+            String linea = tblLineas.getValueAt(tblLineas.getSelectedRow(), 1).toString();
+            FrmFacturas.setLinea(id, linea);
+            this.dispose();
+        }
+    }//GEN-LAST:event_tblLineasMousePressed
 
     /**
      * @param args the command line arguments
