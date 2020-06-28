@@ -5,6 +5,7 @@
  */
 package Logica;
 
+import Datos.DAlmacen;
 import Datos.DFacturas;
 import com.mysql.jdbc.CallableStatement;
 import java.sql.Connection;
@@ -19,9 +20,36 @@ import presentacion.FrmFacturas;
  */
 public class LFacturas {
     Connection cn = LConexion.getConnection();
+     public DefaultTableModel mostrarFacturas(){
+    DefaultTableModel miModelo = null;
+    try {
+        String titulos [] = {"CODIGO","PROVEEDOR","LINEA","FECHA DE REGISTRO"};
+        String dts [] =  new String [4];
+        miModelo = new DefaultTableModel(null, titulos);
+        CallableStatement cst =  (CallableStatement) cn.prepareCall("{ call sp_mostrar_facturas()}");
+       
+        ResultSet rs = cst.executeQuery();
+        while(rs.next()){
+        dts [0] = rs.getString("f.IdFacturas");
+        dts [1] = rs.getString("p.NombreRS");
+        dts [2] = rs.getString("l.Nombre");
+        dts [3] = rs.getString("f.FechaEntrada");
+
+
+        miModelo.addRow(dts);
+        }
+        
+    }  catch  (Exception ex ){
     
-    public String insertarFacturas(DFacturas misFacturas){
-    String msg = null;
+    
+    }
+    
+    return miModelo;
+    
+    }
+    
+    public int insertarFacturas(DFacturas misFacturas){
+    int idres = 0;
     FrmFacturas miFrmFactura= new FrmFacturas();
     try{
         CallableStatement cst =  (CallableStatement) cn.prepareCall("{call sp_insertar_facturas(?,?,?,?)}");
@@ -31,17 +59,15 @@ public class LFacturas {
         cst.registerOutParameter(4, Types.INTEGER);
        
         cst.executeUpdate();
-        int idres = cst.getInt(4);
-        miFrmFactura.retornaId(idres);
-        msg = "si";
+         idres = cst.getInt(4);
     
     
     }catch(Exception ex){
         ex.printStackTrace();
-        msg = "no";
+        idres = 0;
     }
     
-    return msg;
+    return idres;
     }
     
     

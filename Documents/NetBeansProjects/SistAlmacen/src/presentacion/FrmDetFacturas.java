@@ -5,17 +5,30 @@
  */
 package presentacion;
 
+import Datos.DAlmacen;
+import Logica.LAlmacen;
+import Logica.LFacturas;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Oswaldo
  */
 public class FrmDetFacturas extends javax.swing.JInternalFrame {
 
+    public void mostrarBuscar() {
+        DefaultTableModel miModelo;
+        LFacturas fn = new LFacturas();
+        miModelo = fn.mostrarFacturas();
+        tblFacturas.setModel(miModelo);
+    }
+
     /**
      * Creates new form FrmDetFacturas
      */
     public FrmDetFacturas() {
         initComponents();
+        mostrarBuscar();
     }
 
     /**
@@ -29,7 +42,7 @@ public class FrmDetFacturas extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblFacturas = new javax.swing.JTable();
         btnBuscar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
 
@@ -41,7 +54,7 @@ public class FrmDetFacturas extends javax.swing.JInternalFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista De Facturas"));
         jPanel1.setToolTipText("");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblFacturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -49,7 +62,7 @@ public class FrmDetFacturas extends javax.swing.JInternalFrame {
                 "ID", "PROVEEDOR", "LINEA", "FECHA DE REGISTRO"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblFacturas);
 
         btnBuscar.setText("Buscar");
 
@@ -105,7 +118,7 @@ public class FrmDetFacturas extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tblFacturas;
     // End of variables declaration//GEN-END:variables
 }

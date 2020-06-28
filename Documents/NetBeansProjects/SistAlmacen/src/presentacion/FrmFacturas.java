@@ -6,11 +6,11 @@
 package presentacion;
 
 import Datos.DAlmacen;
+import Datos.DDetalleFacturas;
 import Datos.DFacturas;
-import Datos.DLineas;
 import Logica.LAlmacen;
+import Logica.LDetalleFacturas;
 import Logica.LFacturas;
-import Logica.LLineas;
 import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.text.DecimalFormat;
@@ -28,26 +28,18 @@ import javax.swing.table.DefaultTableModel;
 public class FrmFacturas extends javax.swing.JInternalFrame {
 
     DefaultTableModel miModelo;
-    int miIdFactura;
-
-    public void retornaId(int idres) {
-        miIdFactura = idres;
-        System.out.println(String.valueOf(idres));
-        System.out.println(String.valueOf(miIdFactura));
-
-    }
-
-    /**
+    static int idlineas = 0;
+      /**
      * Creates new form FrmFacturas
      */
     public FrmFacturas() {
         initComponents();
+        habilitar(true);
         txtIdLineas.setVisible(false);
         txtIdProveedores.setVisible(false);
-
         txtTotal.setEditable(false);
-
         miModelo = (DefaultTableModel) tblFacturas.getModel();
+        
         tblFacturas.getColumn("CODIGO").setWidth(30);
         tblFacturas.getColumn("CODIGO").setPreferredWidth(30);
 
@@ -74,8 +66,23 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
     }
 
     public static void setLinea(String id, String linea) {
+        idlineas = Integer.parseInt(id);
         txtIdLineas.setText(id);
         txtLinea.setText(linea);
+     
+    }
+
+        public void habilitar(boolean b) {
+        txtEnter.setEnabled(!b);
+        txtFecha.setEnabled(!b);
+        txtLinea.setEnabled(!b);
+        txtProveedor.setEnabled(!b);
+        btnCancelar.setEnabled(!b);
+        btnGuardar.setEnabled(!b);
+        //btnBuscarLinea.setEnabled(!b);
+        //btnBuscarProveedor.setEnabled(!b);
+        btnNuevo.setEnabled(b);
+
     }
 
     /**
@@ -143,6 +150,12 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
+            }
+        });
+
+        txtLinea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLineaActionPerformed(evt);
             }
         });
 
@@ -214,6 +227,11 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
             }
         });
 
+        txtEnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEnterActionPerformed(evt);
+            }
+        });
         txtEnter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtEnterKeyPressed(evt);
@@ -253,7 +271,7 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnProveedor)
-                                    .addComponent(btnLinea))
+                                    .addComponent(btnLinea, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(24, 24, 24)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtIdProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
@@ -277,18 +295,18 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtLinea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLinea)
-                            .addComponent(txtIdLineas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(btnLinea)
+                    .addComponent(txtIdLineas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLinea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,7 +314,7 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
                             .addComponent(txtIdProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4))
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addComponent(txtEnter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -306,7 +324,7 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
                     .addComponent(btnNuevo)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -344,7 +362,8 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtProveedorActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // TODO add your handling code here:              
+        // TODO add your handling code here:     
+      habilitar(false);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLineaActionPerformed
@@ -371,7 +390,7 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        String msg = "";
+        String msg = "", msgfinal = "";
 
         if (txtLinea.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "CAMPO LINEA OBLIGATORIO", "VALIDACION", JOptionPane.WARNING_MESSAGE);
@@ -404,16 +423,77 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
         dd = cal.get(Calendar.DAY_OF_MONTH);
 
         dts.setFechaEntrada(new Date(mm, aa, dd));
+        int idfact = fn.insertarFacturas(dts);
+        //sepuede limpiar p21 min16
 
-        msg = fn.insertarFacturas(dts);
-        if (msg == "si") {
-            JOptionPane.showMessageDialog(rootPane, "se registro de forma correcta", "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
+        if (idfact > 0) {
+            int filas = tblFacturas.getRowCount();
+            for (int i = 0; i < filas; i++) {
+                String idprod = tblFacturas.getValueAt(i, 0).toString();
+                String descrip = tblFacturas.getValueAt(i, 1).toString();
+                int cantidad = Integer.parseInt(tblFacturas.getValueAt(i, 2).toString());
+                String umedidad = tblFacturas.getValueAt(i, 3).toString();
+                double punitario = Double.parseDouble(tblFacturas.getValueAt(i, 4).toString());
+                double total = Double.parseDouble(tblFacturas.getValueAt(i, 5).toString());
+                LDetalleFacturas fundf = new LDetalleFacturas();
+                DDetalleFacturas dtsf = new DDetalleFacturas();
+                dtsf.setFacturasId(idfact);
+                dtsf.setProductosId(idprod);
+                dtsf.setCantidad(cantidad);
+                dtsf.setTotal(total);
 
+                String mensaje = fundf.registrarDetalleFactura(dtsf);
+                if (mensaje.equals("si")) {
+                    LAlmacen funAl = new LAlmacen();
+                    DAlmacen dtsp = new DAlmacen();
+
+                    dtsp.setIdAlmacen(idprod);
+                    dtsp.setDescripcion(descrip);
+                    dtsp.setStock(cantidad);
+                    dtsp.setUMedida(umedidad);
+                    dtsp.setPUnitario(punitario);
+                    dtsp.setLineasId(idlineas);
+
+                    msgfinal = funAl.insertarProductos(dtsp);
+
+                }
+
+            }
+            JOptionPane.showMessageDialog(rootPane, msgfinal, "INFORMACION", JOptionPane.INFORMATION_MESSAGE);
+                txtLinea.setText("");
+                idlineas =0;
         } else {
             JOptionPane.showMessageDialog(rootPane, "ocurrio un problema al insertar", "INFORMACION", JOptionPane.ERROR_MESSAGE);
         }
+      
+        limpiar();
+        habilitar(true);
 
     }//GEN-LAST:event_btnGuardarActionPerformed
+    public void limpiar() {
+        
+        txtLinea.setText("m");
+        txtEnter.setText("");
+        txtFecha.setDate(null);
+        txtProveedor.setText("m");
+        
+        txtIdLineas.setText("");
+        txtIdProveedores.setText("");
+        txtTotal.setText("");
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tblFacturas.getModel();
+            int filas = tblFacturas.getRowCount();
+            for (int i = 0; filas > i; i++) {
+                modelo.removeRow(0);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al limpiar la tabla.");
+        }
+      
+  
+
+    }
+
     public boolean estaenTabla(String texto) {
         boolean res = false;
         DecimalFormat ft = new DecimalFormat("###.00");
@@ -465,24 +545,32 @@ public class FrmFacturas extends javax.swing.JInternalFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
+       habilitar(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void tblFacturasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblFacturasKeyPressed
         // TODO add your handling code here:
-        DecimalFormat ft = new DecimalFormat("###.00");
-        for (int i = 0; i < tblFacturas.getRowCount(); i++) {
-            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        DecimalFormat ft = new DecimalFormat("####.00");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            for (int i = 0; i < tblFacturas.getRowCount(); i++) {
                 int cantidad = Integer.parseInt(tblFacturas.getValueAt(i, 2).toString());
                 double preciounitario = Double.parseDouble(tblFacturas.getValueAt(i, 4).toString());
 
-
                 double totalparcial = cantidad * preciounitario;
                 tblFacturas.setValueAt(ft.format(totalparcial), i, 5);
-
             }
             sumarTotal();
     }//GEN-LAST:event_tblFacturasKeyPressed
     }
+    private void txtLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLineaActionPerformed
+        //  your handling code here:
+
+    }//GEN-LAST:event_txtLineaActionPerformed
+
+    private void txtEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEnterActionPerformed
+    
 
     public void mostrarProductos(String producto) {
         LAlmacen fn = new LAlmacen();

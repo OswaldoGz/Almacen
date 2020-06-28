@@ -6,6 +6,7 @@
 package Logica;
 
 import Datos.DAlmacen;
+import Datos.DLineas;
 
 import com.mysql.jdbc.CallableStatement;
 import java.sql.Connection;
@@ -76,6 +77,30 @@ public class LAlmacen {
     }
     
     return dts;
+    }
+       public String insertarProductos(DAlmacen misProductos){
+    String msg = null;
+    try{
+        CallableStatement cst =  (CallableStatement) cn.prepareCall("{call sp_insertar_productos(?,?,?,?,?,?)}");
+        cst.setString(1, misProductos.getIdAlmacen());
+        cst.setInt(2, misProductos.getLineasId());
+        cst.setString(3, misProductos.getDescripcion());
+        cst.setInt(4, misProductos.getStock());
+        cst.setDouble(5, misProductos.getPUnitario());
+        cst.setString(6, misProductos.getUMedida());
+     
+        
+
+        cst.executeUpdate();
+        msg = "se registro de forma correcta";
+    
+    
+    }catch(Exception ex){
+        ex.printStackTrace();
+        msg = "no";
+    }
+    
+    return msg;
     }
     
 }
